@@ -1,0 +1,36 @@
+// week-6/item-list.js
+"use client";
+import { useState } from 'react';
+import Item from './item';
+import items from './items.json';
+
+  export default function ItemList() {
+    const [sortBy, setSortBy] = useState('name')
+    const sortItem = [...items].sort((names, categories) => {
+        if (sortBy === 'name'){
+            return names.name.localeCompare(categories.name)
+        } else if (sortBy === 'category'){
+            return names.category.localeCompare(categories.category)
+        }
+    });
+
+    return (
+      <div className="max-w-md bg-gray-900">
+        <div className="mb-4 space-x-4">
+            <span className="text-white">Sort by:</span>
+            <button onClick={() => setSortBy('name')} className={`p-2 w-40 ${sortBy === 'name' ? 'bg-orange-400' : 'bg-orange-700'}`}>Name (alphabetical)</button>
+            <button onClick={() => setSortBy('category')} className={`p-2 w-40 ${sortBy === 'category' ? 'bg-orange-400' : 'bg-orange-700'}`}>Category (alphabetical)</button>
+            <ul>
+                {sortItem.map(item => (
+                    <Item 
+                        key={item.id}
+                        name={item.name} 
+                        quantity={item.quantity} 
+                        category={item.category} 
+                    />
+                ))}
+            </ul>
+        </div>
+      </div>
+    );
+  }
