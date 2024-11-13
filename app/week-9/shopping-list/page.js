@@ -34,7 +34,7 @@ export default function ShoppingList() {
     setSelectedItemName(cleanedItemName);
   };
 
-  if (!user) {
+  if (!user) { //is not needed but i find adding this is way more responsive and less delayed when going directly to http://localhost:3000/week-9/shopping-list
     return null;
   }
 
