@@ -29,7 +29,7 @@ export default function Week9Page() {
 // Display some of the user's information
 // got rid of display name. followed what the instruction said
   return (
-    <div className="container">
+    <div>
       {user ? (
         <div>
           <h1 className="text-4xl font-bold text-white">Shopping List App</h1>
